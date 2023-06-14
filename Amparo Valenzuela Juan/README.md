@@ -24,6 +24,9 @@ Para llevar a cabo el proceso de transformación de los datos en formato csv a d
 
 ### 2.1. Selección de la fuente de datos
 
+Los datos se han descargado del siguiente enlace https://datos.gob.es/es/catalogo/a15002917-certificaciones-energeticas, se trata de una web del gobierno de España para la reutilización de información pública. Concretamente se han descargado del catálogo de datos el conjunto de datos 'Certificaciones energéticas' (0e2e3204-c0e3-418d-87bb-a2949b676f5f.csv)
+
+La certificación de eficiencia energética de un edificio es el proceso por el cual se obtiene la calificación de eficiencia energética del edificio, calificación que permite valorar el consumo de energía del edificio y las emisiones de gases de efecto invernadero asociadas a dicho consumo energía. Esta calificación se expresa gráficamente mediante una etiqueta de eficiencia energética, similar a la de los electrodomésticos, que asigna a cada edificio una clase energética de eficiencia, que va desde la clase A, para los edificios de menor consumo energético, a la clase G, para los menos eficientes. El Registro de certificados de eficiencia energética de edificios ofrece información de las características energéticas de los edificios, para que los compradores y usuarios la tengan en cuenta a la hora de comprar o alquilar un edificio o vivienda. El objetivo es favorecer la promoción de edificios de alta eficiencia energética y las inversiones en ahorro de energía. En esta ficha podrá consultar los resultados de dichas certificaciones.
 
 
 ### 2.2. Análisis de los datos
