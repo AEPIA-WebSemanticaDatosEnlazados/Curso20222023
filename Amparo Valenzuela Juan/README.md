@@ -37,77 +37,78 @@ energética de edificios ofrece información de las características energética
 
 La licencia de los datos escogidos proviene de [Creative Commons Attribution License (cc-by)](http://www.opendefinition.org/licenses/cc-by), ésta permite la redistribución y la reutilización de una obra con licencia con la condición de que se acredite debidamente al creador. La licencia que utilizan es [CC-BY](https://creativecommons.org/choose/) con reconocimiento 4.0 internacional, de cultura libre, que permite compartir las adaptaciones de la obra y que permite usos comerciales. Por las características propias de la licencia, se utilizará la misma para los datos transformados. 
 
-En la siguiente tabla se detalla el análisi de los datos a transformar:
+La frecuencia de actualización de los datos es diaria, por lo que en la descarga del fichero con fecha 14/06/2023, tiene una totalidad del 78.511 filas. En la siguiente tabla se detalla el análisi de los datos a transformar:
 
-|Nombre campo|	Tipo dato |Descripción|Rango|                  
+|Nombre campo|	Tipo dato |Descripción|Características|                  
 | --- | --- | --- | --- |
-|_id|
-|CodEdificio|
-|Tipo|
-|CodRegistroComAutonoma|
-|Direccion|
-|Localidad|
-|CP|
-|Provincia|
-|Zona|
-|AnioConstruccion|
-|NormativaVigente|
-|ReferenciaCatastral|
-|TipoDeEdificio|
-|Procedimiento|
-|Fecha|
-|SuperficieHabitable|
-|PorcentajeSuperficieHabitableCalefactada|
-|PorcentajeSuperficieHabitableRefrigerada|
-|PorcentajeSuperficieHabitableAcristalada|
-|DemandaDiariaACS|
-|GeneradoresCalefaccion|
-|GeneradoresRefrigeracion|
-|InstalacionesACS|
-|SistemasTermicos|
-|SistemasElectricos|
-|PotenciaTotalInstalada|
-|Nombre|
-|ConsumoFinalCalefaccion|
-|ConsumoFinalRefrigeracion|
-|ConsumoFinalACS|
-|DemandaACS|
-|Nombre1|
-|EnergiaGeneradaAutoconsumida|
-|ReduccionGlobalEnergiaPrimariaNoRenovable|
-|Global|
-|Calefaccion|
-|Refrigeracion|
-|ACS|
-|GasNatural|
-|GasoleoC|
-|GLP|
-|Carbon|
-|BiomasaPellet|
-|BiomasaOtros|
-|ElectricidadPeninsular|
-|ElectricidadBaleares|
-|ElectricidadCanarias|
-|ElectricidadCeutayMelilla|
-|Biocarburante|
-|EnergiaPrimNoRenovable|
-|EmisionesCO2|
-|CalificacionDemandaEscalaCalefaccion|
-|CalificacionDemandaEscalaRefrigeracion|
-|CalificacionDemandaCalefaccion|
-|CalificacionDemandaRefrigeracion|
-|CalificacionEnePrinNoRenovEscalaGlobal|
-|CalificacionEnePrinNoRenovGlobal|
-|CalificacionEnePrinNoRenovCalefaccion|
-|CalificacionEnePrinNoRenovRefrigeracion|
-|CalificacionEnePrinNoRenovACS|
-|CalificacionEnePrinNoRenovIluminacion|
-|CalificacionEmiCO2EscalaGlobal|
-|CalificacionEmiCO2Global|
-|CalificacionEmiCO2Calefaccion|
-|CalificacionEmiCO2Refrigeracion|
-|CalificacionEmiCO2ACS|
-|CalificacionEmiCO2Iluminacion|
+|_id|numeric|identificador del registro|pk, valor no nulo|
+|CodEdificio|varchar|código edificio|valor no nulo|
+|Tipo|varchar|tipo de edificación: nuevo, existente, terminado, proyecto|valor no nulo|
+|CodRegistroComAutonoma|varchar|código registro de la comunidad autónoma|valor no nulo|
+|Direccion|varchar|dirección del edificio|valor no nulo|
+|Localidad|varchar|localidad del edificio|vacío|
+|CP|varchar|código postal del edificio|valor nulo|
+|Provincia|varchar|provincia del edificio|vacío|
+|Zona|varchar|zona del edificio|valor nulo|
+|AnioConstruccion|numeric|anyo de construcción del edificio|valor nulo|
+|NormativaVigente|varchar|normativa vigente|valor nulo|
+|ReferenciaCatastral|varchar|referencia catastral|valor nulo|
+|TipoDeEdificio|varchar|tipo del edificio|valor nulo|
+|Procedimiento|varchar|procedimiento certificación|valor nulo|
+|Fecha|date|fecha edificación|valor nulo|
+|SuperficieHabitable|numeric|superficie habitable de la vivienda|vacío|
+|PorcentajeSuperficieHabitableCalefactada|numeric|porcentaje de superficie habitada con calefacción|vacío|
+|PorcentajeSuperficieHabitableRefrigerada|numeric|porcentaje de superficie habitada con aire acondicionado|vacío|
+|PorcentajeSuperficieHabitableAcristalada|numeric|porcentaje de superficie habitada acristalada|vacío|
+|DemandaDiariaACS|numeric|demanda diaria ACS (agua caliente sanitaria)|vacío|
+|GeneradoresCalefaccion|varchar|generadores de calefacción|valor nulo|
+|GeneradoresRefrigeracion|varchar|generadores de refigeración|valor nulo|
+|InstalacionesACS|varchar|instalaciones ACS (agua caliente sanitaria)|valor nulo|
+|SistemasTermicos|varchar|sistemas térmicos|valor nulo|
+|SistemasElectricos|varchar|sistemas eléctricos|valor nulo|
+|PotenciaTotalInstalada|numeric|potencia total instalada|valor nulo|
+|Nombre|varchar|nombre de la contribución energética|valor nulo|
+|ConsumoFinalCalefaccion|numeric|consumo final de la calefacción|valor nulo|
+|ConsumoFinalRefrigeracion|numeric|consumo final de refigeración|valor nulo|
+|ConsumoFinalACS|numeric|consumo final ACS (agua caliente sanitaria)|valor nulo|
+|DemandaACS|numeric|demanda ACS (agua caliente sanitaria)|valor nulo|
+|Nombre1|varchar|nombre de la contribución energética|valor nulo|
+|EnergiaGeneradaAutoconsumida|numeric|energía general de autoconsumo|valor nulo|
+|ReduccionGlobalEnergiaPrimariaNoRenovable|numeric|reducción global de energía primaria no renovable|valor nulo|
+|Global|numeric|en general|vacío|
+|Calefaccion|numeric|calefacción|vacío|
+|Refrigeracion|numeric|refrigeración|vacío|
+|ACS|numeric|ACS (agua caliente sanitaria)|vacío|
+|GasNatural|varchar|gas natural|valor nulo|
+|GasoleoC|varchar|gasoleo|valor nulo|
+|GLP|varchar|GLP (gas licuado de petróleo) combustión limpia|valor nulo|
+|Carbon|varchar|carbón|valor nulo|
+|BiomasaPellet|varchar|biomasa pellet|valor nulo|
+|BiomasaOtros|varchar|biomasa otros|valor nulo|
+|ElectricidadPeninsular|varchar|electricidad en la Península|valor nulo|
+|ElectricidadBaleares|varchar|electicidad en Baleares|valor nulo|
+|ElectricidadCanarias|varchar|electricidad en Canarias|valor nulo|
+|ElectricidadCeutayMelilla|varchar|electricidad en Ceuta y Melilla|valor nulo|
+|Biocarburante|varchar|biocarburante|valor nulo|
+|EnergiaPrimNoRenovable|varchar|energía prima no renovable|valor nulo|
+|EmisionesCO2|varchar|emisiones CO2|valor nulo|
+|CalificacionDemandaEscalaCalefaccion|varchar|calificación de la demanda en escala de la calefacción|valor nulo|
+|CalificacionDemandaEscalaRefrigeracion|varchar|calificación de la demanda en escala de la refrigeración|valor nulo|
+|CalificacionDemandaCalefaccion|varchar|calificación demanda calefacción|valor nulo|
+|CalificacionDemandaRefrigeracion|varchar|calificación demanda refrigeración|valor nulo|
+|CalificacionEnePrinNoRenovEscalaGlobal|varchar|calificación energia principal no renovable en escala global|valor nulo|
+|CalificacionEnePrinNoRenovGlobal|varchar|calificación energia principal no renovable global|valor nulo|
+|CalificacionEnePrinNoRenovCalefaccion|varchar|calificación energia principal no renovable en calefaccion|valor nulo|
+|CalificacionEnePrinNoRenovRefrigeracion|varchar|calificación energia principal no renovable en refrigeración|valor nulo|
+|CalificacionEnePrinNoRenovACS|varchar|calificación energia principal no renovable en ACS|valor nulo|
+|CalificacionEnePrinNoRenovIluminacion|varchar|calificación energia principal no renovable en iluminación|valor nulo|
+|CalificacionEmiCO2EscalaGlobal|varchar|calificación en emisiones CO2 en escala global|valor nulo|
+|CalificacionEmiCO2Global|varchar|calificación en emisiones CO2 global|valor nulo|
+|CalificacionEmiCO2Calefaccion|varchar|calificación en emisiones CO2 en calefacción|valor nulo|
+|CalificacionEmiCO2Refrigeracion|varchar|calificación en emisiones CO2 en refrigeración|valor nulo|
+|CalificacionEmiCO2ACS|varchar|calificación en emisiones CO2 en ACS|valor nulo|
+|CalificacionEmiCO2Iluminacion|varchar|calificación en emisiones CO2 en iluminación|valor nulo|
+
 
 
 ### 2.3. Estrategia de nombrado
