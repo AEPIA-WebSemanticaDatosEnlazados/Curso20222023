@@ -37,6 +37,77 @@ energética de edificios ofrece información de las características energética
 
 La licencia de los datos escogidos proviene de [Creative Commons Attribution License (cc-by)](http://www.opendefinition.org/licenses/cc-by), ésta permite la redistribución y la reutilización de una obra con licencia con la condición de que se acredite debidamente al creador. La licencia escogida es [CC-BY](https://creativecommons.org/choose/) con reconocimiento 4.0 internacional, de cultura libre, que permite compartir las adaptaciones de la obra y que permite usos comerciales. Por las características propias de la licencia, se utilizará la misma para los datos transformados. 
 
+A continuación se detalla el análisi de los datos a transformar:
+
+|Nombre campo|	Tipo dato |
+| --- | --- |
+|_id|
+|CodEdificio|
+|Tipo|
+|CodRegistroComAutonoma|
+|Direccion|
+|Localidad|
+|CP|
+|Provincia|
+|Zona|
+|AnioConstruccion|
+|NormativaVigente|
+|ReferenciaCatastral|
+|TipoDeEdificio|
+|Procedimiento|
+|Fecha|
+|SuperficieHabitable|
+|PorcentajeSuperficieHabitableCalefactada|
+|PorcentajeSuperficieHabitableRefrigerada|
+|PorcentajeSuperficieHabitableAcristalada|
+|DemandaDiariaACS|
+|GeneradoresCalefaccion|
+|GeneradoresRefrigeracion|
+|InstalacionesACS|
+|SistemasTermicos|
+|SistemasElectricos|
+|PotenciaTotalInstalada|
+|Nombre|
+|ConsumoFinalCalefaccion|
+|ConsumoFinalRefrigeracion|
+|ConsumoFinalACS|
+|DemandaACS|
+|Nombre1|
+|EnergiaGeneradaAutoconsumida|
+|ReduccionGlobalEnergiaPrimariaNoRenovable|
+|Global|
+|Calefaccion|
+|Refrigeracion|
+|ACS|
+|GasNatural|
+|GasoleoC|
+|GLP|
+|Carbon|
+|BiomasaPellet|
+|BiomasaOtros|
+|ElectricidadPeninsular|
+|ElectricidadBaleares|
+|ElectricidadCanarias|
+|ElectricidadCeutayMelilla|
+|Biocarburante|
+|EnergiaPrimNoRenovable|
+|EmisionesCO2|
+|CalificacionDemandaEscalaCalefaccion|
+|CalificacionDemandaEscalaRefrigeracion|
+|CalificacionDemandaCalefaccion|
+|CalificacionDemandaRefrigeracion|
+|CalificacionEnePrinNoRenovEscalaGlobal|
+|CalificacionEnePrinNoRenovGlobal|
+|CalificacionEnePrinNoRenovCalefaccion|
+|CalificacionEnePrinNoRenovRefrigeracion|
+|CalificacionEnePrinNoRenovACS|
+|CalificacionEnePrinNoRenovIluminacion|
+|CalificacionEmiCO2EscalaGlobal|
+|CalificacionEmiCO2Global|
+|CalificacionEmiCO2Calefaccion|
+|CalificacionEmiCO2Refrigeracion|
+|CalificacionEmiCO2ACS|
+|CalificacionEmiCO2Iluminacion|
 
 
 ### 2.3. Estrategia de nombrado
