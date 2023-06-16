@@ -327,3 +327,18 @@ ORDER BY DESC(?nivelLuz)
 ![](Imagenes/consulta-4-resultado.png)
 
 
+## 4. Conclusiones
+
+La transformación de datos CSV a datos enlazados llevada a cabo en esta tarea ha requerido de una limpieza y transformación previa de los datos de entrada, así como de un proceso de enlazamiento. Pero si bien es cierto que es un proceso en ocasiones costoso ya que depende de cómo se presenten los datos en el CSV de origen, el resultado final es una representación más rica y estructurada donde la información se encuentra enlazada y sobre la que pueden realizarse consultas mediante SPARQL con el fin de obtener información más completa.
+
+
+En resumen, los datos enlazados permiten conectar los datos de manera estructurada y semántica mediante el uso de URIs facilitando la navegación y la exploración de la información deseada.
+
+
+## 5. Bibliografía
+
+* Temario de la asignatura de Web Semántica y Datos Enlazados
+* [Portal de Datos Abiertos del Ayuntamiento de Santander](http://datos.santander.es/)
+* [Documentación *OpenRefine*](https://openrefine.org/)
+* [Sintaxis Markdown](https://markdown.es/sintaxis-markdown/)
+* [Apache Jena Fuseki](https://jena.apache.org/documentation/fuseki2/)
