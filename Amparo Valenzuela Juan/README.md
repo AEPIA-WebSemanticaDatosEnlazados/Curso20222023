@@ -67,12 +67,12 @@ La frecuencia de actualización de los datos es diaria, por lo que en la descarg
 |SistemasTermicos|string|sistemas térmicos|contiene vacíos; característica energética del edificio con Nombre: ;Cons.Fin.Calefaccion: ; Cons.Fin.Refrigeracion: ; Cons.Fin.ACS.: ; DemandaACS: |
 |SistemasElectricos|string|sistemas eléctricos|contiene vacíos; característica energética del edificio con Nombre: ;Ener.Gen.Autoconsumida:|
 |PotenciaTotalInstalada|decimal|potencia total instalada|contiene vacíos; valores positivos|
-|Nombre|string|nombre de la contribución energética|contiene vacíos|
+|Nombre|string|nombre sistema térmico|contiene vacíos|
 |ConsumoFinalCalefaccion|decimal|consumo final de la calefacción|contiene vacíos; valores positivos|
 |ConsumoFinalRefrigeracion|decimal|consumo final de refigeración|contiene vacíos; valores positivos|
 |ConsumoFinalACS|decimal|consumo final ACS (agua caliente sanitaria)|contiene vacíos; valores positivos|
 |DemandaACS|decimal|demanda ACS (agua caliente sanitaria)|contiene vacíos; valores positivos|
-|Nombre1|string|nombre de la contribución energética|contiene vacíos|
+|Nombre1|string|nombre sistema eléctrico|contiene vacíos|
 |EnergiaGeneradaAutoconsumida|decimal|energía general de autoconsumo|contiene vacíos; valores positivos|
 |ReduccionGlobalEnergiaPrimariaNoRenovable|decimal|reducción global de energía primaria no renovable|contiene vacíos; valores positivos|
 |Global|numeric|en general|no hay datos|
@@ -174,20 +174,78 @@ El desarrollo ontológico a tratar sigue la metodología de NeOn, pero sin hacer
      | --- | --- |--- |
      |CertificacionEnergetica|procedimiento, fechaCertif|- Una certicación energética pertenece a un edificio (perteneceEdificio)|
      |Edificio|codEdificio, tipo, codRegistroComAutonoma, direccion, cp, zonaClimatica, anyoConstruccio, normativaVigente, referenciaCatastral, tipoEdificio|- Un edificio tiene características energéticas (tieneCaracEnergeticas). - Un edificio tiene certificación energética (tieneCertificacion).|
-     |Caracteristicas||- Es clase de las subclases: Energia, Instalacion. - Una característica energética tiene un tipo de energía (tieneTipoenergia)|
-     |Energia|nombre, tipo, descripción||
-     |Instalacion|nombre, tipo, descripción|| 
+     |Caracteristicas|- Es clase de las subclases: Energia, Instalacion.|- Una característica energética tiene un tipo de energía (tieneTipoenergia)|
+     |Energia|nombre, tipo, descripción|- Una característica energética tiene un tipo de energía (tieneTipoenergia)|
+     |Instalacion|nombre, tipo, descripción|- Una característica energética tiene un tipo de energía (tieneTipoenergia)| 
      |TipoEnergia|tipo|- Un tipo de energía tiene consumo (tieneConsumo).|
      |Consumo|nombre, consumo|- Un consumo de un tipo de energía tiene calificación (tieneCalificacion).|  
-     |Calificacion||- Es clase de las subclases: CalificaEnePrinNoRenov, CalificaEnergia, CalificaDemanad, CalificaEmiCO2. - Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).||
-     |CalificaEnePrinNoRenov|nombre, escala, calEnePrinNoRenovACS, calEnePrinNoRenovCalefaccion, calEnePrinNoRenovGlobal, calEnePrinNoRenovIluminacion, calEnePrinNoRenovRefrigeracion||
-     |CalificaDemanda|nombre, escala, calDemandaCalefaccion, calDemandaRefrigeracion||
-     |CalificaEmiCO2|nombre, escala, calEmiCO2Iluminacion, calEmiCO2ACS, calEmiCO2Refrigeracion, calEmiCO2Calefaccion, calEmiCO2Global||
-     |CalificaEnergetica|nombre, energiaPrimNoRenov, emisionesCO2||
+     |Calificacion|- Es clase de las subclases: CalificaEnePrinNoRenov, CalificaEnergia, CalificaDemanad, CalificaEmiCO2.|- Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).|
+     |CalificaEnePrinNoRenov|nombre, escala, calEnePrinNoRenovACS, calEnePrinNoRenovCalefaccion, calEnePrinNoRenovGlobal, calEnePrinNoRenovIluminacion, calEnePrinNoRenovRefrigeracion|- Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).|
+     |CalificaDemanda|nombre, escala, calDemandaCalefaccion, calDemandaRefrigeracion|- Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).|
+     |CalificaEmiCO2|nombre, escala, calEmiCO2Iluminacion, calEmiCO2ACS, calEmiCO2Refrigeracion, calEmiCO2Calefaccion, calEmiCO2Global|- Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).|
+     |CalificaEnergetica|nombre, energiaPrimNoRenov, emisionesCO2|- Una calificación energética pertenece a una certificación energética del edificio (perteneceCertificacion).|
+
+* Búsqueda de ontologías:
+   - Para el dominio de certificaciones energéticas, se realizó una búsqueda exhaustiva de recursos que se están utilizando en la Linked Data Cloud, en el repositorio [LOV](https://lov.linkeddata.es/dataset/lov/vocabs). Se realizó una búsqueda de los siguientes
+   términos: certificate, energy, building, qualification. Se encontraron las siguientes ontologías que posteriormente se analizaron: bot, saref, dco, esco.
+
+* Ontologías encontradas en el repositorio [LOV](https://lov.linkeddata.es/dataset/lov/vocabs):
+   - [Building Topology Ontology (bot)](https://w3c-lbd-cg.github.io/bot/): Es una ontología para describir los conceptos topológicos centrales de un edificio.
+   - [SAREF extension for building (saref4bldg)](https://saref.etsi.org/saref4bldg/v1.1.2/#s4bldg:HeatExchanger): Esta ontología amplía la ontología SAREF para el dominio de la construcción al definir los dispositivos de construcción y cómo se ubican en un edificio.
+   - [European Skills, Competences, qualifications and Occupations (esco)](https://ec.europa.eu/esco/lod/static/model.html): La ontología de la taxonomía "Habilidades, competencias, cualificaciones y ocupaciones europeas". La ontología considera tres pilares ESCO (o taxonomía) y 2 registros. Los tres pilares son: - Ocupación - Habilidad (y competencias) - Cualificación
+   - [Ontology dco](https://www.dco.domos-project.eu/#crossreference): Ontología que define dispositivos en diferentes entornos.
+
+* Selección de las ontologías de dominio:
+   - La ontología _bot_ define el area por zonas de un edificio, por lo que se decide no reutilizarla. La ontología _SAREF_ sí que se encuentran entidades de características energéticas como el generador eléctrico, como objetos físicos o dispositivos en un edificio, pero se centra en la definición más que en el consumo. La ontología _esco_ no tiene ninguna entidad que se ajuste para ser reutilizada y la ontología _dco_ tiene clases muy interesantes como Gas, Gas boiler, pero tras cargar la ontología en Protégé y verla con detalle, no se ha visto la necesidad de su reutilización:
+
+     <img width="175" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/90ae79d5-9b80-4d00-9aa3-3a19e12ac252">
+     
+* Implementación de la ontología:
+  - Para la implementación de la ontología en el dominio de certificación energéticas de un edificio se ha utilizado la herramienta [Protégé versión 5.6.1](https://protege.stanford.edu/software.php), desarrollada por el grupo Stanford Medical Informatics de la universidad de Stanford en colaboración con la Universidad de Manchester.
+  - La ontología se ha guardado como OntoCEE, y la siguiente imagen muestra el gráfico de la misma, diseñada desde del tab OntoGraf:
+    <img width="488" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/91f65ccc-1f68-4d60-8a87-64200a21a72a">
     
+  - Taxonomía. La jerarquía de las clases en la ontología se visualiza en la siguiente imagen:
+    
+    <img width="170" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/be885b9f-02a4-4793-aa57-f89c6dff2318">
+
+* Evaluación de la ontología:
+  - Se evalúa la ontología con la aplicación [OOPS!](https://oops.linkeddata.es/) haciendo Scanner by RDF, y el resultado es el siguiente:
+    <img width="455" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/3bc4b969-9064-4e09-bd3c-5c315bd201ea">
+  - Se re-evalúa la ontología y se resuelven gran parte de los pitfalls:
+
+    <img width="623" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/8ad390e4-c02c-49bf-ac63-323d3bdfc921">
+
+  -  El error _P41:No license declared_ persiste. Se investiga cómo resolverlo, y se encuentra la solución que consiste en declarar una anotación con dcterms:license, pero tras probarlo, el problema persiste en OOPS!. Se validan otras ontologías con OOPS! tales como dogont.rdf y persoon.rdf, pero también aparece el P41 pese a tener las anotaciones de licencia, por lo que se decide crear una issue en Github para comentarlo con el resto de usuarios y compartir el problema.
+    
+    <img width="476" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/2c52f060-7094-4718-addb-9e90f90cc982">
+
+  -  El pitfall P22 tiene importancia baja y no es necesario resolverlo, por lo que se da como válido.
     
 ### 2.5. Transformación de datos
+La serialización elegida para RDF es _RDF-XML_ y la herramienta a utilizar para dar soporte a la transformación es _OpenRefine_:
+- Se cargan los datos:
+<img width="957" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/d4fc45d5-3ef9-444e-8997-c8ad84725f3f">
 
+- Se transforman la columna  _CP_, _AnioConstruccion_ que está como texto y es numérico:
+<img width="644" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/0250beb3-d676-4c3c-90c9-634590311a60">
+
+- Se eliminan las columnas que no tienen valor: _Localidad, SuperficieHabitable, PorcentajeSuperficieHabitableCalefactada,  PorcentajeSuperficieHabitableRefrigerada, PorcentajeSuperficieHabitableAcristalada, DemandaDiariaACS, ReduccionGlobalEnergiaPrimariaNoRenovable, Global, Calefaccion, Refrigeracion, ACS, ElectricidadBaleares, ElectricidadCanarias, ElectricidadCeutayMelilla_ 
+
+- Se eliminan las columna que no se va a informar: _id
+- Como los datos son de la provincia de _Navarra_, se añade manualmente el valor de la columna _Provincia_ que no tiene datos.
+- Existen columnas con datos anidadados como _GeneradoresCalefaccion_ pero no se va hacer un Split sobre ellas ya que hay mucha informacion y se interpreta como descripción del recurso.
+- Se renombran las columnas _Nombre_ por _NombreSistemaTermico_ y _Nombre1_ por _NombreSistemaElectrico_.
+- Se cambia a numérico las siguientes columnas: _PotenciaTotalInstalada, ConsumoFinalCalefaccion, ConsumoFinalRefrigeracion, ConsumoFinalACS, DemandaACS, EnergiaGeneradaAutoconsumida_.
+- Se eliminan las filas que tienen datos incompletos y no son coherentes. Para obtener las filas, se hace un facet sobre las columnas de calificación energética que no pueden estar vacías. En total tras realizar la limpieza de datos, se ha quedado con un total de 6010 filas de 78.511 registros que se habían cargado inicialmente, quedando fuera 72.510 con datos inconsistentes:
+  
+  <img width="953" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/d9a7e1e3-00bb-422f-a035-7772798e57cf">
+- Se tienen problemas a la hora de codificar los caracteres 'ñ' y acentos, por lo que en una primera instancia se tratan desde 'Custom text transform on colum...' y se utiliza la expresión value.reinterpret('UTF-8','ISO-8859-1') entre diferentes combinaciones pero sin éxito. Finalmente se soluciona exportando los datos, codificando a ANSI desde Notepad y volviendo a importar los datos para continuar con su transformación, quedando de la siguiente forma:
+
+<img width="947" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/55742fba-2038-47b7-ad57-f0ae39925d58">
+
+  
+  
 
 ### 2.6. Enlazado
 
