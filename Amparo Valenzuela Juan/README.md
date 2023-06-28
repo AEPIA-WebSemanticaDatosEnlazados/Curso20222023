@@ -13,6 +13,7 @@
 3. Aplicación y explotación
 4. Conclusiones
 5. Bibliografía
+6. Fuente de datos
 
 ## 1. Introducción
 
@@ -32,7 +33,7 @@ La certificación de eficiencia energética de un edificio es el proceso por el 
 asigna a cada edificio una clase energética de eficiencia, que va desde la clase A, para los edificios de menor consumo energético, a la clase G, para los menos eficientes. El Registro de certificados de eficiencia 
 energética de edificios ofrece información de las características energéticas de los edificios, para que los compradores y usuarios la tengan en cuenta a la hora de comprar o alquilar un edificio o vivienda.
 
-
+**Nota:** El Dataset descargado se deja en el repositorio, en la carpeta [Dataset](https://github.com/AEPIA-WebSemanticaDatosEnlazados/Curso20222023/tree/main/Amparo%20Valenzuela%20Juan/Dataset).
 ### 2.2. Análisis de los datos
 
 La licencia de los datos escogidos proviene de [Creative Commons Attribution License (cc-by)](http://www.opendefinition.org/licenses/cc-by), ésta permite la redistribución y la reutilización de una obra con licencia con la condición de que se acredite debidamente al creador. La licencia que utilizan es [CC-BY](https://creativecommons.org/choose/) con reconocimiento 4.0 internacional, de cultura libre, que permite compartir las adaptaciones de la obra y que permite usos comerciales. Por las características propias de la licencia, se utilizará la misma para los datos transformados. 
@@ -116,13 +117,13 @@ Se define la estragia de nombrado tanto para recursos Web como entidades fuera d
 * Elección de la forma de las URIs:
   - Se utiliza el símbolo hash '#' para la redirección a un documento, con acceso completo a los datos. Y el símbolo slash '/' para la identificación de recursos que son dinámicos.
 * Elección del dominio de las URIs:
-  - Dominio: http//CEE.es/ 
+  - Dominio: http://CEE.es/ 
 * Elección ruta de las URIs:
-  - Ruta para términos ontológicos: http//CEE.es/datosgob/ontology/CertificacionEnergeticaCEE#
-  - Ruta para individuos: http//CEE.es/datosgob/resource/
+  - Ruta para términos ontológicos: http://CEE.es/datosgob/ontology/CertificacionEnergeticaCEE#
+  - Ruta para individuos: http://CEE.es/datosgob/resource/
 * Elección patrones para clases, propiedades e individuos:
-  - Patrón para términos ontológicos: http//CEE.es/datosgob/ontology/CertificacionEnergeticaCEE#<term_name>
-  - Patrón para individuos: http//CEE.es/datosgob/resource/<resource_name>
+  - Patrón para términos ontológicos: http://CEE.es/datosgob/ontology/CertificacionEnergeticaCEE#<term_name>
+  - Patrón para individuos: http://CEE.es/datosgob/resource/<resource_name>
 
 ### 2.4. Desarrollo del vocabulario
 
@@ -221,7 +222,8 @@ El desarrollo ontológico a tratar sigue la metodología de NeOn, pero sin hacer
     <img width="476" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/2c52f060-7094-4718-addb-9e90f90cc982">
 
   -  El pitfall P22 tiene importancia baja y no es necesario resolverlo, por lo que se da como válido.
-    
+
+ **Nota:** Se adjunta la ontologia desarrollada en la carpeta del repositorio [_ontoCEE_](https://github.com/AEPIA-WebSemanticaDatosEnlazados/Curso20222023/tree/main/Amparo%20Valenzuela%20Juan/ontoCEE)   
 ### 2.5. Transformación de datos
 Se va a transformar la fuente de datos escogida y analizada en los apartados anteriores en formato _RDF_. La serialización elegida para RDF es _RDF-XML_ y la herramienta a utilizar para dar soporte a la transformación es [_OpenRefine_](https://openrefine.org/docs/manual/expressions#grel-general-refine-expression-language):
 - Se cargan los datos:
@@ -240,7 +242,7 @@ Se va a transformar la fuente de datos escogida y analizada en los apartados ant
 - Se eliminan las filas que tienen datos incompletos y no son coherentes. Para obtener las filas, se hace un facet sobre las columnas de calificación energética que no pueden estar vacías. En total tras realizar la limpieza de datos, se ha quedado con un total de 6010 filas de 78.511 registros que se habían cargado inicialmente, quedando fuera 72.510 con datos inconsistentes:
   
   <img width="953" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/d9a7e1e3-00bb-422f-a035-7772798e57cf">
-- Se tienen problemas a la hora de codificar los caracteres 'ñ' y acentos, por lo que en una primera instancia se tratan desde 'Custom text transform on colum...' y se utiliza la expresión value.reinterpret('UTF-8','ISO-8859-1') entre diferentes combinaciones pero sin éxito. Finalmente se soluciona exportando los datos, codificando a ANSI desde Notepad y volviendo a importar los datos para continuar con su transformación, quedando de la siguiente forma (se adjunta proyecto en la carpeta ProyectoOpenRefine):
+- Se tienen problemas a la hora de codificar los caracteres 'ñ' y acentos, por lo que en una primera instancia se tratan desde 'Custom text transform on colum...' y se utiliza la expresión value.reinterpret('UTF-8','ISO-8859-1') entre diferentes combinaciones pero sin éxito. Finalmente se soluciona exportando los datos, codificando a ANSI desde Notepad y volviendo a importar los datos para continuar con su transformación, quedando de la siguiente forma (**se adjunta proyecto en la carpeta [_ProyectoOpenRefine_](https://github.com/AEPIA-WebSemanticaDatosEnlazados/Curso20222023/tree/main/Amparo%20Valenzuela%20Juan/ProyectoOpenRefine)**):
 
 <img width="947" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/55742fba-2038-47b7-ad57-f0ae39925d58">
 
@@ -255,7 +257,7 @@ Se va a transformar la fuente de datos escogida y analizada en los apartados ant
 
 <img width="406" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/d05b4614-5fec-4e19-8641-8214d9b3f71c">
 
-- Resultado final tras la exportación del fichero _RDF/XML_. Se muestra una imagen del primer registro de datos. Se adjunta fichero en la carpeta _ExportRDF_:
+- Resultado final tras la exportación del fichero _RDF/XML_. Se muestra una imagen del primer registro de datos. **Se adjunta fichero en la carpeta [_TransDataset_](https://github.com/AEPIA-WebSemanticaDatosEnlazados/Curso20222023/tree/main/Amparo%20Valenzuela%20Juan/TransDataset)**:
   
   <img width="724" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/2eb89664-04f4-49e1-8712-99191fc9bf26">
   
@@ -306,17 +308,61 @@ Los pasos que se han llevado a cabo han sido los siguientes:
 
    <img width="666" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/7fbb19bb-6174-432b-9d9b-5be6b60ca98d">
 
-## 3. Aplicación y explotación (en construcción)
+## 3. Aplicación y explotación
 
+Para la llevar a cabo la aplicación y explotación del dataset _CertificadosEnergeticosEdificios.csv_ transformado en _CertificadosEnergeticosEdificios_trans_conv.rdf_, desarrollado en los apartados anteriores, se ha utilizado la herramienta de uso libre [Apache Jena Fuseki](https://jena.apache.org/download/index.cgi), por ser compatible con el framework [Jena](https://jena.apache.org/) y de simple implementación. En ella se han llevado a cabo consultas en el lenguaje de consulta [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) para la aplicación y explotación de los datos:
 
+- Consulta 1 - Para el edificio con código 127485, obtener los datos y la calificación energética en emisiones CO2:
+<img width="914" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/4f79260c-184d-478b-96a0-50b131fa12dc">
 
+- Consulta 2 - Para los edificios con año de construcción _2023_, obtener los distintos tipos de calificación energética, de acuerdo con el tipo de energia del edificio:
+<img width="930" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/2d100cfa-bf1f-42a1-912e-66301a02a83e">
 
+- Consulta 3 - Obtener códigos de edificios con una calificación de energia principal no renovable en calefaccion de tipo A y E:
+<img width="916" alt="image" src="https://github.com/amvajua1/Curso20222023/assets/136450615/7dcf8f24-f082-4ca2-a278-7a3db1f72fc1">
 
+**Nota:** El código de las consultas y sus resultados se dejan en el repositorio dentro de la carpeta [_Aplicacion_](https://github.com/AEPIA-WebSemanticaDatosEnlazados/Curso20222023/tree/main/Amparo%20Valenzuela%20Juan/Aplicacion).
 
-      
+Tal y como se ha visto en la aplicación, con los datos enlazados facilita al usuario, interesado en comprar o alquilar una vivienda, obtener la información de las certificaciones energéticas más relevante de entre todos los edificios de la provincia de Navarra. Como puede ser, obtener la dirección de aquellos edificios que se hayan construido en el 2020 con unas calificaciones energéticas aceptables para poder así, visitar sus viviendas desponibles en venta o en alquiler. Esto demuestra su gran potencial.
 
-      
+## 4. Conclusiones
 
+A la hora de seleccionar los datos, se ha encontrado mucha variedad de información con licencia de libre uso, y actualizada diariamente a la que se puede acceder. Se ha observado que en las certificaciones energéticas, las comunidades autónomas hacen uso de campos diferentes a la hora de registrar sus datos en csv, por ejemplo Aragón registra las certificaciones energéticas de forma diferente que Navarra, aunque ambas expresan lo mismo, pero se concluye que haciendo uso de OpenRefine y transformando los datos se podrían complementar ambas. 
+
+Una vez seleccionado los datos, para su análisis y desarrollo de la ontología (conceptualización, entidades, propiedades, relaciones etc) surge la necesidad de entender bien los datos y su interpretación, en este caso relacionado con las certificaciones energéticas de los edificios, lo que conlleva bastante dedicación, pero a la vez se aprende mucho.
+
+El desarrollo de la ontología se ha llevado a cabo haciendo uso de la Metodología de Neón ya que te guía en los pasos que se han de realizar para llegar al objetivo final, teniendo en cuenta las buenas prácticas a seguir. El análisis de ontologías para reutilizar ha sido costoso y extenso, ya que existen muchas ontologías publicadas, y seleccionar la adecuada o cuál puede ser útil es una tarea tediosa. Sin embargo, una vez que las tienes localizadas te aprovechas de la ventaja propia de la reutilización, aunque aquí se ha tomado la decisión de no reutilizar. En la evaluación de la ontología, haciendo uso de la herramienta OOPS! ha aparecido el pitfall P41 que informa que la licencia tiene que declararse, pero, aun habiéndola declarado, el P41 persiste. 
+
+La herramienta OpenRefine es intuitiva de utilizar y dispone de muchas utilidades para transformar los datos y hacer la extensión RDF. Tiene mucho potencial y permite el enlazado de información de aquellos datos que son candidatos. Se ha comprobado que enriquece los datos muchísimo al compartir la información con otros datos enlazados que expresan más información para un mismo dato. 
+
+Como los datos se actualizan a diario se había decidido su publicación, pero he tenido problemas con DataHub.io y he creado una issue para compartir.
+
+En la aplicación y explotación de los datos se comprueba que el usuario que accede a los datos enlazados para un dominio en concreto puede manejar la información realizando consultas sin limitaciones y obtener información relevante y precisa.
+
+Con todo ello concluyo en que, los puntos tratados en la memoria han ilustrado los conceptos, buenas prácticas y ventajas del uso de los datos enlazados. Durante el desarrollo de la misma he aprendido y asentado los conceptos explicados en la parte teórica.
+
+## 5. Bibliografía 
+- [Cómo interpretar el certificado energético](https://apuntoarquitectura.com/como-interpretar-el-certificado-energetico/)
+- [Certificación energética - Documentación](https://energia.gob.es/desarrollo/EficienciaEnergetica/CertificacionEnergetica/Documentos/Documentos%20informativos/2022_Informe-seguimiento.pdf)
+- [Normativa eficencia energética](https://energia.gob.es/desarrollo/EficienciaEnergetica/CertificacionEnergetica/DocumentosReconocidos/normativamodelosutilizacion/2015_06_22_Nuevo-Modelo-Certificado-Eficiencia-Energetica-Version-Web-vacio.pdf)
+- Metodología NeOn [Suárez-Figueroa, 2012]
+- Malaysian_Food_Composition_Ontology_Evaluation.pdf
+- [dcmi-terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/license)
+- [OpenRefine - Documentación](https://openrefine.org/docs/manual/expressions#grel-general-refine-expression-language)
+- [Publicación Datahub](http://okfnlabs.org/blog/2016/07/25/publish-data-packages-to-datahub-ckan.html)
+- [data - Tutorial](http://okfnlabs.org/blog/2016/07/25/publish-data-packages-to-datahub-ckan.html)
+- [GNOSS](https://nextweb.gnoss.com/recurso/tutorial-how-to-publish-linked-data-on-the-web--/df7dc39b-a4f4-4b8d-aef5-be36f35414c5)
+- [Apache Jena Fuseki - Documentación](https://jena.apache.org/documentation/fuseki2/)
+- [SPARQL- Documentación](https://www.w3.org/TR/rdf-sparql-query/)     
+
+## 6. Fuente de datos
+
+Los ficheros con los datos utilizados en la memoria y generados se distribuyen de la siguiente forma:
+- Carpeta Aplicacion -> resultado de las consultas (Consulta1.csv, Consulta2.csv, Consulta3.csv) y código en Consultas.txt
+- Carpeta Dataset -> datos seleccionados csv
+- Carpeta ProyectoOpenRefine -> proyectos exportados de OpenRefine tras la transformación de los datos y extensión en RDF.
+- Carpeta TrasDataset -> fichero de datos trasnformado y con extensión RDF y TURTLE.
+- Carpeta ontoCEE -> ontologia creada en Prótége 5.0.
 
 
   
